@@ -29,14 +29,14 @@ theDateRightNow=$(date +%m-%d-%Y-%H:%M:%S)
 gitVersionNumber=$(git rev-parse --short HEAD)
 gitURL="https://github.com/naomiproject/naomi"
 
-source "lib/functions.sh"
-source "lib/naomiLogo.sh"
-source "lib/naomiInstall.sh"
-source "lib/naomiUninstall.sh"
-source "lib/aptSetupWizard.sh"
-source "lib/yumSetupWizard.sh"
-source "lib/naomiAutoUpdate.sh"
-source "lib/naomiVersion.sh"
+source "functions/functions.sh"
+source "functions/naomiLogo.sh"
+source "functions/naomiInstall.sh"
+source "functions/naomiUninstall.sh"
+source "functions/aptSetupWizard.sh"
+source "functions/yumSetupWizard.sh"
+source "functions/naomiAutoUpdate.sh"
+source "functions/naomiVersion.sh"
 
 
 tput reset  #clear the screen
