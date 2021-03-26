@@ -12,8 +12,8 @@ BLUE='\033[1;34m'
 MAGENTA='\033[1;35m'
 CYAN='\033[1;36m'
 WHITE='\033[1;37m'
-B_C='\033[1;96m' #Bright Cyan                           For logo
-B_R='\033[1;91m' #Bright Red                            For alerts/errors
+Bright_Cyan='\033[1;96m' #Bright Cyan                           For logo
+Bright_Red='\033[1;91m' #Bright Red                            For alerts/errors
 B_G='\033[1;92m' #Bright Green                          For initiating a process i.e. "Installing blah blah..." or calling attention to thing in outputs
 B_Y='\033[1;93m' #Bright Yellow                         For urls & emails
 B_Black='\033[1;90m' #Bright Black                      For lower text
@@ -49,7 +49,7 @@ quit() {
 }
 SUDO_COMMAND() {
     echo
-    printf "${B_R}Notice:${B_W} this program is about to use sudo to run the following command:${NL}"
+    printf "${Bright_Red}Notice:${B_W} this program is about to use sudo to run the following command:${NL}"
     printf "[$(pwd)]\$ ${B_G}${1}${B_W}${NL}"
     if [ "$SUDO_APPROVE" != "-y" ]; then
         CONTINUE
@@ -65,11 +65,11 @@ CHECK_PROGRAM() {
     echo $?
 }
 unknown_os () {
-  printf "${B_R}Notice:${B_W} Unfortunately, your operating system distribution and version are not supported by this script at this time.${NL}"
+  printf "${Bright_Red}Notice:${B_W} Unfortunately, your operating system distribution and version are not supported by this script at this time.${NL}"
   echo
-  printf "${B_R}Notice:${B_W} You can find a list of supported OSes and distributions on our website: ${B_Y}https://projectnaomi.com/dev/docs/installation/${NL}"
+  printf "${Bright_Red}Notice:${B_W} You can find a list of supported OSes and distributions on our website: ${B_Y}https://projectnaomi.com/dev/docs/installation/${NL}"
   echo
-  printf "${B_R}Notice:${B_W} Please join our Discord or email us at ${B_Y}contact@projectnaomi.com${B_W} and let us know if you run into any issues.${NL}"
+  printf "${Bright_Red}Notice:${B_W} Please join our Discord or email us at ${B_Y}contact@projectnaomi.com${B_W} and let us know if you run into any issues.${NL}"
   exit 1
 }
 os_detect () {
@@ -174,22 +174,22 @@ curl_check () {
 	  printf "${B_W}yum found${NL}"
       SUDO_COMMAND "yum install -d0 -e0 -y curl"
       if [ "$?" -ne "0" ]; then
-        printf "${B_R}Notice:${B_W} Unable to install curl! Your base system has a problem; please check your default OS's package repositories because curl should work.${NL}"
-        printf "${B_R}Notice:${B_W} Curl installation aborted.${NL}"
+        printf "${Bright_Red}Notice:${B_W} Unable to install curl! Your base system has a problem; please check your default OS's package repositories because curl should work.${NL}"
+        printf "${Bright_Red}Notice:${B_W} Curl installation aborted.${NL}"
         exit 1
       fi
     elif [ -n "$(command -v apt-get)" ]; then
 	  printf "${B_W}apt found${NL}"
       SUDO_COMMAND "sudo apt-get install -q -y curl"
       if [ "$?" -ne "0" ]; then
-        printf "${B_R}Notice:${B_W} Unable to install curl! Your base system has a problem; please check your default OS's package repositories because curl should work.${NL}"
-        printf "${B_R}Notice:${B_W} Curl installation aborted.${NL}"
+        printf "${Bright_Red}Notice:${B_W} Unable to install curl! Your base system has a problem; please check your default OS's package repositories because curl should work.${NL}"
+        printf "${Bright_Red}Notice:${B_W} Curl installation aborted.${NL}"
         exit 1
       fi
     else
-      printf "${B_R}Notice:${B_W} Neither yum nor apt-get found${NL}"
-      printf "${B_R}Notice:${B_W} Unable to install curl! Your base system has a problem; please check your default OS's package repositories because curl should work.${NL}"
-      printf "${B_R}Notice:${B_W} Curl installation aborted.${NL}"
+      printf "${Bright_Red}Notice:${B_W} Neither yum nor apt-get found${NL}"
+      printf "${Bright_Red}Notice:${B_W} Unable to install curl! Your base system has a problem; please check your default OS's package repositories because curl should work.${NL}"
+      printf "${Bright_Red}Notice:${B_W} Curl installation aborted.${NL}"
       exit 1
     fi
   fi
@@ -204,22 +204,22 @@ jq_check () {
 	  printf "${B_W}yum found${NL}"
       SUDO_COMMAND "yum install -d0 -e0 -y jq"
       if [ "$?" -ne "0" ]; then
-        printf "${B_R}Notice:${B_W} Unable to install jq! Your base system has a problem; please check your default OS's package repositories because jq should work.${NL}"
-        printf "${B_R}Notice:${B_W} jq installation aborted.${NL}"
+        printf "${Bright_Red}Notice:${B_W} Unable to install jq! Your base system has a problem; please check your default OS's package repositories because jq should work.${NL}"
+        printf "${Bright_Red}Notice:${B_W} jq installation aborted.${NL}"
         exit 1
       fi
     elif [ -n "$(command -v apt-get)" ]; then
 	  printf "${B_W}apt found${NL}"
       SUDO_COMMAND "sudo apt-get install -q -y jq"
       if [ "$?" -ne "0" ]; then
-        printf "${B_R}Notice:${B_W} Unable to install jq! Your base system has a problem; please check your default OS's package repositories because jq should work.${NL}"
-        printf "${B_R}Notice:${B_W} jq installation aborted.${NL}"
+        printf "${Bright_Red}Notice:${B_W} Unable to install jq! Your base system has a problem; please check your default OS's package repositories because jq should work.${NL}"
+        printf "${Bright_Red}Notice:${B_W} jq installation aborted.${NL}"
         exit 1
       fi
     else
-      printf "${B_R}Notice:${B_W} Neither yum nor apt-get found${NL}"
-      printf "${B_R}Notice:${B_W} Unable to install jq! Your base system has a problem; please check your default OS's package repositories because jq should work.${NL}"
-      printf "${B_R}Notice:${B_W} jq installation aborted.${NL}"
+      printf "${Bright_Red}Notice:${B_W} Neither yum nor apt-get found${NL}"
+      printf "${Bright_Red}Notice:${B_W} Unable to install jq! Your base system has a problem; please check your default OS's package repositories because jq should work.${NL}"
+      printf "${Bright_Red}Notice:${B_W} jq installation aborted.${NL}"
       exit 1
     fi
   fi
@@ -251,7 +251,7 @@ apt_setup_wizard() {
       exec bash
     else
       echo
-      printf "${B_R}Notice: ${B_W}Naomi Apt Setup Wizard Failed.${NL}"
+      printf "${Bright_Red}Notice: ${B_W}Naomi Apt Setup Wizard Failed.${NL}"
       echo
       exit 1
     fi
@@ -280,7 +280,7 @@ apt_setup_wizard() {
       exec bash
     else
       echo
-      printf "${B_R}Notice: ${B_W}Naomi Apt Setup Wizard Failed.${NL}"
+      printf "${Bright_Red}Notice: ${B_W}Naomi Apt Setup Wizard Failed.${NL}"
       echo
       exit 1
     fi
@@ -324,7 +324,7 @@ yum_setup_wizard() {
       exec bash
     else
       echo
-      printf "${B_R}Notice: ${B_W}Naomi Yum Setup Wizard Failed.${NL}"
+      printf "${Bright_Red}Notice: ${B_W}Naomi Yum Setup Wizard Failed.${NL}"
       echo
       exit 1
     fi
@@ -353,7 +353,7 @@ yum_setup_wizard() {
       exec bash
     else
       echo
-      printf "${B_R}Notice: ${B_W}Naomi Yum Setup Wizard Failed.${NL}"
+      printf "${Bright_Red}Notice: ${B_W}Naomi Yum Setup Wizard Failed.${NL}"
       echo
       exit 1
     fi
@@ -407,7 +407,7 @@ naomi_install() {
                 sleep 5
                 exec bash $0
             else
-                printf "${B_R}Notice:${B_W} Did not recognize input, try again...${NL}"
+                printf "${Bright_Red}Notice:${B_W} Did not recognize input, try again...${NL}"
                 echo
             fi
         done
@@ -436,7 +436,7 @@ naomi_install() {
                 sleep 5
                 exec bash $0
             else
-                printf "${B_R}Notice:${B_W} Did not recognize input, try again...${NL}"
+                printf "${Bright_Red}Notice:${B_W} Did not recognize input, try again...${NL}"
                 echo
             fi
         done
@@ -446,7 +446,7 @@ naomi_uninstall() {
     printf "${B_W}=========================================================================${NL}"
     printf "${B_M}Uninstall ${B_W}...${NL}"
     printf "${B_W}=========================================================================${NL}"
-    printf "${B_R}Notice:${B_W} You are about to uninstall Naomi, is that what you want?${NL}"
+    printf "${Bright_Red}Notice:${B_W} You are about to uninstall Naomi, is that what you want?${NL}"
     echo
     while true; do
         printf "${B_Blue}Choice [${B_M}Y${B_Blue}/${B_M}N${B_Blue}]: ${B_W}"
@@ -461,7 +461,7 @@ naomi_uninstall() {
             sleep 5
             exec bash $0
         else
-            printf "${B_R}Notice:${B_W} Did not recognize input, try again...${NL}"
+            printf "${Bright_Red}Notice:${B_W} Did not recognize input, try again...${NL}"
             echo
         fi
     done
@@ -470,7 +470,7 @@ naomi_update() {
     printf "${B_W}=========================================================================${NL}"
     printf "${B_M}Update ${B_W}...${NL}"
     printf "${B_W}=========================================================================${NL}"
-    printf "${B_R}Notice: ${B_W}You are about to manually update Naomi, is that what you want?${NL}"
+    printf "${Bright_Red}Notice: ${B_W}You are about to manually update Naomi, is that what you want?${NL}"
     echo
     while true; do
         printf "${B_Blue}Choice [${B_M}Y${B_Blue}/${B_M}N${B_Blue}]: ${B_W}"
@@ -510,7 +510,7 @@ naomi_update() {
                 sudo rm -Rf ~/Naomi-Temp
                 break
             else
-                printf "${B_R}Notice:${B_W} Error finding your Naomi Options file...${NL}"
+                printf "${Bright_Red}Notice:${B_W} Error finding your Naomi Options file...${NL}"
                 echo
             fi
         elif [ "$updateChoice" = "n" ] || [ "$updateChoice" = "N" ]; then
@@ -518,7 +518,7 @@ naomi_update() {
             sleep 5
             exec bash $0
         else
-            printf "${B_R}Notice:${B_W} Error finding your Naomi Options file...${NL}"
+            printf "${Bright_Red}Notice:${B_W} Error finding your Naomi Options file...${NL}"
         fi
     done
     sleep 5
@@ -564,7 +564,7 @@ naomi_version() {
                 sleep 5
                 exec bash $0
             else
-                printf "${B_R}Notice:${B_W} Did not recognize input, try again...${NL}"
+                printf "${Bright_Red}Notice:${B_W} Did not recognize input, try again...${NL}"
                 echo
             fi
         done
@@ -603,7 +603,7 @@ naomi_version() {
                 sleep 5
                 exec bash $0
             else
-                printf "${B_R}Notice:${B_W} Did not recognize input, try again...${NL}"
+                printf "${Bright_Red}Notice:${B_W} Did not recognize input, try again...${NL}"
                 echo
             fi
         done
@@ -641,12 +641,12 @@ naomi_version() {
                 sleep 5
                 exec bash $0
             else
-                printf "${B_R}Notice:${B_W} Did not recognize input, try again...${NL}"
+                printf "${Bright_Red}Notice:${B_W} Did not recognize input, try again...${NL}"
                 echo
             fi
         done
     else
-        printf "${B_R}Notice:${B_W} Error finding your Naomi Options file...${NL}"
+        printf "${Bright_Red}Notice:${B_W} Error finding your Naomi Options file...${NL}"
     fi
     sleep 5
     exec bash $0
@@ -671,7 +671,7 @@ naomi_autoupdate() {
                 printf "${B_M}N ${B_W}- No Change${NL}"
                 break
             else
-                printf "${B_R}Notice:${B_W} Did not recognize input, try again...${NL}"
+                printf "${Bright_Red}Notice:${B_W} Did not recognize input, try again...${NL}"
                 echo
             fi
         done
@@ -690,12 +690,12 @@ naomi_autoupdate() {
                 printf "${B_M}N ${B_W}- No Change${NL}"
                 break
             else
-                printf "${B_R}Notice:${B_W} Did not recognize input, try again...${NL}"
+                printf "${Bright_Red}Notice:${B_W} Did not recognize input, try again...${NL}"
                 echo
             fi
         done
     else
-        printf "${B_R}Notice:${B_W} Error finding your Naomi Options file...${NL}"
+        printf "${Bright_Red}Notice:${B_W} Error finding your Naomi Options file...${NL}"
     fi
     sleep 5
     exec bash $0
@@ -709,17 +709,17 @@ sleep 5
 tput reset
 
 echo
-printf "${B_C}      ___           ___           ___           ___                  ${NL}"
-printf "${B_C}     /\__\         /\  \         /\  \         /\__\          ___    ${NL}"
-printf "${B_C}    /::|  |       /::\  \       /::\  \       /::|  |        /\  \   ${NL}"
-printf "${B_C}   /:|:|  |      /:/\:\  \     /:/\:\  \     /:|:|  |        \:\  \  ${NL}"
-printf "${B_C}  /:/|:|  |__   /::\~\:\  \   /:/  \:\  \   /:/|:|__|__      /::\__\ ${NL}"
-printf "${B_C} /:/ |:| /\__\ /:/\:\ \:\__\ /:/__/ \:\__\ /:/ |::::\__\  __/:/\/__/ ${NL}"
-printf "${B_C} \/__|:|/:/  / \/__\:\/:/  / \:\  \ /:/  / \/__/~~/:/  / /\/:/  /    ${NL}"
-printf "${B_C}     |:/:/  /       \::/  /   \:\  /:/  /        /:/  /  \::/__/     ${NL}"
-printf "${B_C}     |::/  /        /:/  /     \:\/:/  /        /:/  /    \:\__\     ${NL}"
-printf "${B_C}     /:/  /        /:/  /       \::/  /        /:/  /      \/__/     ${NL}"
-printf "${B_C}     \/__/         \/__/         \/__/         \/__/                 ${NL}"
+printf "${Bright_Cyan}      ___           ___           ___           ___                  ${NL}"
+printf "${Bright_Cyan}     /\__\         /\  \         /\  \         /\__\          ___    ${NL}"
+printf "${Bright_Cyan}    /::|  |       /::\  \       /::\  \       /::|  |        /\  \   ${NL}"
+printf "${Bright_Cyan}   /:|:|  |      /:/\:\  \     /:/\:\  \     /:|:|  |        \:\  \  ${NL}"
+printf "${Bright_Cyan}  /:/|:|  |__   /::\~\:\  \   /:/  \:\  \   /:/|:|__|__      /::\__\ ${NL}"
+printf "${Bright_Cyan} /:/ |:| /\__\ /:/\:\ \:\__\ /:/__/ \:\__\ /:/ |::::\__\  __/:/\/__/ ${NL}"
+printf "${Bright_Cyan} \/__|:|/:/  / \/__\:\/:/  / \:\  \ /:/  / \/__/~~/:/  / /\/:/  /    ${NL}"
+printf "${Bright_Cyan}     |:/:/  /       \::/  /   \:\  /:/  /        /:/  /  \::/__/     ${NL}"
+printf "${Bright_Cyan}     |::/  /        /:/  /     \:\/:/  /        /:/  /    \:\__\     ${NL}"
+printf "${Bright_Cyan}     /:/  /        /:/  /       \::/  /        /:/  /      \/__/     ${NL}"
+printf "${Bright_Cyan}     \/__/         \/__/         \/__/         \/__/                 ${NL}"
 
 sleep 5
 
@@ -771,7 +771,7 @@ while true; do
         echo "EXITING"
         exit 1
     else
-        printf "${B_R}Notice:${B_W} Did not recognize input, try again...${NL}"
+        printf "${Bright_Red}Notice:${B_W} Did not recognize input, try again...${NL}"
         echo
         printf "${B_Blue}Input: ${B_W}"
     fi
