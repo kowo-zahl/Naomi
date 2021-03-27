@@ -7,4 +7,4 @@
     source ~/.local/bin/virtualenvwrapper.sh
 
   workon Naomi
-  python /Naomi.py "$@"
+  python Naomi/Naomi.py "$@"
