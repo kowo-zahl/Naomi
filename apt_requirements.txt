@@ -1,0 +1,21 @@
+# Core requirements
+alsa-utils
+dirmngr
+gettext
+gfortran
+gnupg
+jq
+libatlas3-base
+libncurses5-dev
+libssl-dev
+python3-pip
+util-linux
+
+# Plugins
+## AudioEngine
+### PyAudio
+libasound2-dev
+portaudio19-dev
+pulseaudio
+pulseaudio-utils
+
